@@ -24,7 +24,6 @@ from docutils.utils import get_source_line
 sys.path.insert(0, os.path.abspath('_lib'))
 
 import yaml2rst  # noqa
-import edit_url  # noqa
 
 rst_ansible_roles = 'ansible/roles/'
 yml_ansible_roles = '../ansible/roles/'
@@ -58,10 +57,6 @@ html_context = {
     'github_version': 'master',
     'conf_py_path': '/docs/',
     'commit': git_commit_id,
-    'source_file_to_url_map': edit_url.get_source_file_to_url_map(
-        start_dir=os.path.dirname(__file__),
-        skip_patterns=[]
-    )
 }
 
 
