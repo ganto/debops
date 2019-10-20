@@ -10,7 +10,7 @@
 
   roles:
 
-    - role: debops-contrib.checkmk_agent/env
+    - role: debops.checkmk_agent/env
       tags: [ 'role::checkmk_agent', 'role::checkmk_agent:env', 'role::mariadb' ]
 
     - role: debops.apt_preferences
@@ -45,5 +45,5 @@
         - '{{ checkmk_agent__mariadb__dependent_users }}'
       when: ("mk_mysql" in checkmk_agent__combined_plugins)
 
-    - role: debops-contrib.checkmk_agent
+    - role: debops.checkmk_agent
       tags: [ 'role::checkmk_agent' ]

@@ -34,6 +34,8 @@
 
 - import_playbook: monit.yml
 
+- import_playbook: checkmk_agent.yml
+
 - import_playbook: tftpd.yml
 
 - import_playbook: samba.yml
