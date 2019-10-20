@@ -1,0 +1,40 @@
+---
+
+- name: DebOps pre_tasks hook
+  include: "{{ lookup('task_src', 'checkmk_agent/pre_main.yml') }}"
+
+# System packages [[[
+- name: Ensure specified packages are in there desired state
+  package:
+    name: '{{ item }}'
+    state: '{{ "present" if (checkmk_agent__deploy_state in ["present"]) else "absent" }}'
+  with_flattened:
+    - '{{ checkmk_agent__base_packages  }}'
+  tags: [ 'role::checkmk_agent:pkgs' ]
+# ]]]
+
+- name: Ensure the /etc/check_mk directory does exist
+  file:
+    dest: '/etc/check_mk'
+    state: 'directory'
+    owner: 'root'
+    group: 'root'
+    mode: '0755'
+
+- include: ssh_user.yml
+  when: ('ssh' in checkmk_agent__type) and
+        (not checkmk_agent__ssh_user == "root")
+
+- include: xinetd.yml
+  when: ('xinetd' in checkmk_agent__type)
+
+- include: setup_plugins.yml
+  tags: [ 'role::checkmk_agent:plugins' ]
+  when: checkmk_agent__combined_plugins|length > 0
+
+- include: autojoin.yml
+  tags: [ 'role::checkmk_agent:autojoin' ]
+  when: (checkmk_agent__autojoin|d())
+
+- name: DebOps post_tasks hook
+  include: "{{ lookup('task_src', 'checkmk_agent/post_main.yml') }}"

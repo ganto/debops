@@ -1,0 +1,27 @@
+---
+
+dependencies:
+
+  - role: debops.ansible_plugins
+
+  - role: debops.secret
+
+galaxy_info:
+
+  company: 'DebOps'
+  author: 'Reto Gantenbein, Robin Schneider'
+  description: 'Setup Check_MK monitoring agent'
+  license: 'GPL-3.0'
+  min_ansible_version: '2.1.5'
+
+  platforms:
+
+    - name: Debian
+      versions:
+        - wheezy
+        - jessie
+
+  galaxy_tags:
+    - debops
+    - system
+    - monitoring
