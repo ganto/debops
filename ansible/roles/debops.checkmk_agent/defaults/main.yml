@@ -1,13 +1,15 @@
 ---
 # .. vim: foldmarker=[[[,]]]:foldmethod=marker
 
-# debops-contrib.checkmk_agent default variables [[[
-# ==================================================
+# .. _checkmk_agent__ref_defaults:
+
+# debops.checkmk_agent default variables [[[
+# ==========================================
 
 # .. contents:: Sections
 #    :local:
 #
-# .. include:: includes/all.rst
+# .. include:: ../../../../includes/global.rst
 
 
 # Basic configuration options [[[
@@ -409,7 +411,7 @@ checkmk_agent__apt_preferences__dependent_list:
   - package: 'check-mk-agent'
     backports: [ 'jessie' ]
     reason: 'Package not available in stable Debian Jessie'
-    by_role: 'debops-contrib.checkmk_agent'
+    by_role: 'debops.checkmk_agent'
     state: '{{ "present"
                if (checkmk_agent__deploy_state in ["present"])
                else "absent" }}'
@@ -440,7 +442,7 @@ checkmk_agent__ferm__dependent_rules:
     saddr: '{{ checkmk_agent__allow }}'
     accept_any: True
     weight: '20'
-    by_role: 'debops-contrib.checkmk_agent'
+    by_role: 'debops.checkmk_agent'
     rule_state: '{{ "present"
                     if (("xinetd" in checkmk_agent__type) and
                         (checkmk_agent__deploy_state in ["present"]))
@@ -454,7 +456,7 @@ checkmk_agent__tcpwrappers__dependent_allow:
 
   - daemon: 'inetd'
     comment: 'Ensure legacy tcpwrappers ACL is absent'
-    by_role: 'debops-contrib.checkmk_agent'
+    by_role: 'debops.checkmk_agent'
     state: 'absent'
 
   - daemon:
@@ -467,7 +469,7 @@ checkmk_agent__tcpwrappers__dependent_allow:
     accept_any: False
     weight: '50'
     comment: 'Allow remote connections to the Check_MK agent'
-    by_role: 'debops-contrib.checkmk_agent'
+    by_role: 'debops.checkmk_agent'
     state: '{{ "present"
                if (("xinetd" in checkmk_agent__type) and
                    (checkmk_agent__deploy_state in ["present"]))
