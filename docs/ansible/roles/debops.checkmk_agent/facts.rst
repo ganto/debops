@@ -3,13 +3,13 @@
 Ansible facts
 =============
 
-.. include:: includes/all.rst
+.. include:: ../../../includes/global.rst
 
 The role exposes part of it’s state by means of Ansible local facts for other
 roles and playbooks to use.
 The interface is considered public and changes to it happen in compliance with
-`Semantic Versioning`_ of the role and will be mentioned in the :ref:`checkmk_agent__ref_changelog`.
-Here you can find documentation and examples for them.
+`Semantic Versioning`_ of the role and will be mentioned in the changelog. Here
+you can find documentation and examples for them.
 
 Specification
 -------------
@@ -19,7 +19,7 @@ Specification
   necessary) by the role. Refer to :envvar:`checkmk_agent__plugins` and related
   variables for details.
 
-  Availability: Always, after ``debops-contrib.checkmk_agent/env`` has been run.
+  Availability: Always, after ``debops.checkmk_agent/env`` has been run.
 
 Example
 -------

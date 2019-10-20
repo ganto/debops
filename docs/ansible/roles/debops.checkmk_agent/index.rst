@@ -1,18 +1,17 @@
-.. _debops-contrib.checkmk_agent:
+.. _debops.checkmk_agent:
 
-Ansible role: debops-contrib.checkmk_agent
-==========================================
+debops.checkmk_agent
+====================
 
 .. toctree::
    :maxdepth: 2
 
    introduction
    getting-started
-   defaults
+   defaults/main
    defaults-detailed
    facts
    copyright
-   changelog
 
 ..
  Local Variables:

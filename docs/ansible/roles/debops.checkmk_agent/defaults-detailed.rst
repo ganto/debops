@@ -1,7 +1,7 @@
 Default variable details
-================================
+========================
 
-Some of the ``debops-contrib.checkmk_agent`` default variables have more
+Some of the ``debops.checkmk_agent`` default variables have more
 extensive configuration values than simple strings or lists, here you can
 find documentation and examples for them.
 
